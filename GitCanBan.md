@@ -63,7 +63,7 @@ Chúng ta sẽ có các khu vực theo thứ tự dưới đây
 3. **Khu vực committed**: Sau khi dùng `git commit` thì file từ staging sẽ được đưa lên đây, cũng vẫn ở trên local
 4. **Khu vực remote (gọi origin cũng được)**: Sau khi dùng `git push` sẽ file ở commited lên đây, bây giờ file của bạn đã đưa lên trên server
 
-## 5. Thêm file vào khu vực Staging với `git add`
+## 4. Thêm file vào khu vực Staging với `git add`
 
 Câu lệnh dưới đây sẽ thêm một hoặc nhiều file (đã thay đổi) vào khu vực **Staging**.
 
@@ -88,7 +88,7 @@ git add .
 
 > **Lưu ý** nếu bạn ở thư mục con thì nó chỉ thêm tất cả các file ở thư mục con thôi.
 
-## 6. Khôi phục những file ở khu vực Staging về khu vực code với `git reset`
+## 5. Khôi phục những file ở khu vực Staging về khu vực code với `git reset`
 
 Ngược lại với `git add` thì `git reset` sẽ đưa một hoặc nhiều file ở khu vực **Staging** trở về khu vực code.
 
@@ -110,7 +110,7 @@ Khôi phục tất cả các file.
 git reset .
 ```
 
-## 7. Commit code với `git commit`
+## 6. Commit code với `git commit`
 
 Câu lệnh dưới đây sẽ đính kèm các title khi bạn thực hiện những thay đổi trong dự án. Nó có tác dụng với những file trong khu vực **Staging**.
 
@@ -135,24 +135,24 @@ git commit -m "Title
 > Description"
 ```
 
-## 8. Tạo và clone remote repo với HTTPS và SSH
+## 7. Tạo và clone remote repo với HTTPS và SSH
 
-### 8.1. Clone với Https
+### 7.1. Clone với Https
 
 1. Mở remote repo trên github lên, click vào "Code" chọn "HTTPS" và copy đường link
 2. Mở terminal lên paste đường link đó kèm với câu lệnh `git clone`, ví dụ:
 
    ```bash
-   git clone https://github.com/dreact04072022/git-can-ban.git
+   git clone https://github.com/VanHau87/git_doc
    ```
 
    Trong trường hợp repo đó ở chế độ public thì không sao, nếu repo đó ở chế độ private hoặc ở public nhưng bạn muốn có quyền push code lên remote repo đó thì bạn phải nhập username và mật khẩu vào khi clone. Ví dụ:
 
    ```bash
-   git clone https://username:password@github.com/dreact04072022/git-can-ban.git
+   git clone https://username:password@github.com/VanHau87/git_doc
    ```
 
-### 8.2. Clone với SSH
+### 7.2. Clone với SSH
 
 Clone với SSH thì bạn cần làm 2 thứ
 
@@ -166,7 +166,7 @@ git clone git@github.com:dreact04072022/git-can-ban.git
 
 Clone với SSH tiện lợi hơn giao thức HTTPS vì bạn không cần nhập username và mật khẩu mỗi khi clone, dễ làm lộ thông tin. Bạn cũng chỉ cần tạo SSH key và add vào 1 lần duy nhất, những lần sau chỉ cần chạy `git clone` là được rồi.
 
-### 8.3. Tạo SSH key
+### 7.3. Tạo SSH key
 
 Để tạo SSH key thì có thể tham khảo: [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
@@ -182,7 +182,7 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 Nó sẽ yêu cầu bạn nhập tên file để lưu, nếu bạn enter thì nó sẽ lấy tên file mặc định như trong dấu (). Lưu ý là khi nhập tên file phải nhập đầy đủ đường dẫn lưu file tương tự như trong dấu () nhé.
 
 ```bash
-Enter file in which to save the key (/c/Users/dutha/.ssh/id_ed25519):
+Enter file in which to save the key (/c/Users/ADMIN/.ssh/.ssh/id_ed25519):
 ```
 
 Tiếp theo nó sẽ yêu cầu bạn nhập passphrase (tương tự password thôi). Cá nhân mình thì không nhập, cứ Enter thôi vì khi nhập sau này mỗi khi làm việc với Git phải nhập passphrase khá mệt
@@ -198,20 +198,20 @@ Enter same passphrase again:
 Sau khi tạo thành công thì nó sẽ sinh ra cho bạn 2 file là private key và public key theo đường dẫn mà bạn nhập tên file. File chứa public key sẽ có đuôi `.pub` phía sau.
 
 ```bash
-Your identification has been saved in /c/Users/dutha/.ssh/id_duthanhduoc10
-Your public key has been saved in /c/Users/dutha/.ssh/id_duthanhduoc10.pub
+Your identification has been saved in /c/Users/ADMIN/.ssh/.ssh/id_ed25519
+Your public key has been saved in /c/Users/ADMIN/.ssh/.ssh/id_ed25519.pub
 ```
 
-Để đọc nội dung public SSH key thì bạn chỉ có khá nhiều cách, bạn dùng cách nào dưới đây cũng được. Ví dụ file public key của mình bên trên là `id_duthanhduoc10.pub`
+Để đọc nội dung public SSH key thì bạn chỉ có khá nhiều cách, bạn dùng cách nào dưới đây cũng được. Ví dụ file public key của mình bên trên là `id_ed25519.pub`
 
-- Copy đường dẫn này `c:/Users/dutha/.ssh/id_duthanhduoc10.pub` bỏ lên Chrome thì nó sẽ ra nội dung của public key
-- Dùng git bash gõ `cat /c/Users/dutha/.ssh/id_duthanhduoc10.pub`
+- Copy đường dẫn này `c:/Users/ADMIN/.ssh/.ssh/id_ed25519.pub` bỏ lên Chrome thì nó sẽ ra nội dung của public key
+- Dùng git bash gõ `cat /c/Users/ADMIN/.ssh/.ssh/id_ed25519.pub`
 
-### 8.4. Tiến hành thêm SSH public key vào Github
+### 7.4. Tiến hành thêm SSH public key vào Github
 
 Tham khảo đầy đủ tại [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-### 8.5. Kiểm ta SSH key đã kết nối github thành công hay chưa
+### 7.5. Kiểm ta SSH key đã kết nối github thành công hay chưa
 
 Tham khảo đầy đủ cho các hệ điều hành tại [https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
 
@@ -233,13 +233,13 @@ Tham khảo đầy đủ cho các hệ điều hành tại [https://docs.github.
 
 4. Kiểm tra lại coi thông báo có đúng username tài khoản github của bạn hay không. Nếu đúng thì đã thành công, nếu sai thì kiểm tra lại public key bạn add vào github có thể bị sai.
 
-### 8.6. Trường hợp bạn tạo SSH key với passphrases
+### 7.6. Trường hợp bạn tạo SSH key với passphrases--để dành xem sau
 
 Với SSH key, nếu ai đó truy cập được vào máy tính của bạn thì có thể truy cập được vào github và thay đổi mã nguồn của bạn. Bạn cũng có thể thêm passphrase vào SSH key của bạn để tăng cường tính bảo mật. Khi bạn thêm như vậy thì mỗi lần bạn push code thì nó Git đều yêu cầu bạn nhập passphrase, bạn cũng có thể dùng `ssh-agent` để chỉ nhập passphrase 1 lần trong phiên làm việc đó thôi.
 
 Thông tin đầy đủ về [làm việc với SSH key passphrase tại đây](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases)
 
-#### Thêm hoặc thay đổi passphrase
+#### Thêm hoặc thay đổi passphrase--để dành xem sau
 
 Nếu bạn tạo SSH key với passphrase thì không cần quan tâm cái này, còn nếu lúc tạo bạn không có passphrase, giờ muốn thêm hoặc thay đổi thì chỉ cần gõ theo lệnh dưới
 
@@ -280,7 +280,7 @@ Nếu key của bạn có passphrase, bạn sẽ bị yêu cầu enter passphras
 > **Tip**: Câu lệnh `ssh-add` sẽ tương đương `ssh-add ~/.ssh/id_rsa`.
 > Đôi lúc muốn check ssh-agent có đang chạy hay chưa thì chỉ cần chạy câu lệnh `ssh-add ~/.ssh/id_ed25519` (nhớ thay đường dẫn cho đúng với private key của bạn nhé) nếu kết quả nó là `Could not open a connection to your authentication agent.` thì ssh-agent chưa chạy, còn nếu nó yêu cầu nhập passphrase hay "Identity added..." thì nghĩa là đã chạy rồi.
 
-## 9. Dùng nhiều tài khoản Github trên cùng một máy tính
+## 8. Dùng nhiều tài khoản Github trên cùng một máy tính
 
 Tạo 1 file tên là `config` trong thư mục `~/.ssh/`
 
